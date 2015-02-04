@@ -4,9 +4,7 @@
 int main()
 {
 	using namespace myun2::memorize;
-	buffer b;
-	b.alloc(30);
-	b.realloc(100);
-	b.free();
+	buffer b("init", 5, 100);
+	b.realloc(1000);
 	return 0;
 }

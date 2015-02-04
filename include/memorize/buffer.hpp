@@ -15,6 +15,17 @@ namespace myun2 {
 				ptr = 0;
 				size = 0;
 			}
+			buffer(unsigned long initial_size) {
+				ptr = 0;
+				alloc(initial_size);
+			}
+			buffer(const void* initial_data, unsigned long length, unsigned long initial_size=0) {
+				ptr = 0;
+				if (initial_size < length)
+					initial_size = length;
+				alloc(initial_size);
+				memcpy(ptr, initial_data, length);
+			}
 			virtual ~buffer() { free(); }
 			void free() {
 				if (ptr) {
