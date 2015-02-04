@@ -15,9 +15,10 @@ namespace myun2 {
 				ptr = 0;
 				size = 0;
 			}
+			virtual ~buffer() { free(); }
 			void free() {
 				if (ptr) {
-					free(ptr);
+					::free(ptr);
 					ptr = 0;
 					size = 0;
 				}
@@ -28,9 +29,10 @@ namespace myun2 {
 				ptr = calloc(size, 1);
 			}
 			void resize(unsigned long new_size) {
-				ptr = realloc(ptr, new_size);
+				ptr = ::realloc(ptr, new_size);
 				size = new_size;
 			}
+			void realloc(unsigned long new_size) { resize(new_size); }
 		};
 	}
 }
