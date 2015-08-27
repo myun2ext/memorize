@@ -20,6 +20,9 @@ namespace myun2
 			void write(unsigned long addr, const void* data, unsigned long size) {
 				memcpy(buffer + addr, data, size);
 			}
+			void read(unsigned long addr, void* data, unsigned long size) {
+				memcpy(data, buffer + addr, size);
+			}
 		};
 	}
 }

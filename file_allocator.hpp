@@ -36,6 +36,10 @@ namespace myun2
 				fseek(fp, addr, SEEK_SET);
 				fwrite(data, size, 1, fp);
 			}
+			void read(unsigned long addr, void* data, unsigned long size) {
+				fseek(fp, addr, SEEK_SET);
+				fread(data, size, 1, fp);
+			}
 		};
 	}
 }
