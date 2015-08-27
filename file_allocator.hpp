@@ -32,9 +32,19 @@ namespace myun2
 				}
 				return fp != NULL;
 			}
+			unsigned long size() {
+				fseek(fp, 0, SEEK_END);
+				return ftell(fp);
+			}
 			void write(unsigned long addr, const void* data, unsigned long size) {
 				fseek(fp, addr, SEEK_SET);
 				fwrite(data, size, 1, fp);
+			}
+			unsigned long add(const void* data, unsigned long size) {
+				fseek(fp, 0, SEEK_END);
+				unsigned long p = ftell(fp);
+				fwrite(data, size, 1, fp);
+				return p;
 			}
 			void read(unsigned long addr, void* data, unsigned long size) {
 				fseek(fp, addr, SEEK_SET);
