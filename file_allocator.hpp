@@ -21,7 +21,7 @@ namespace myun2
 		private:
 			FILE* fp;
 		public:
-			file_allocator(const char* file) : open(file) {}
+			file_allocator(const char* file) { open(file); }
 			bool open(const char* file)
 			{
 				if ( access(file, 0) )
@@ -31,6 +31,10 @@ namespace myun2
 					if ( fp != NULL) fseek(fp, 0, SEEK_END);
 				}
 				return fp != NULL;
+			}
+			void write(unsigned long addr, const void* data, unsigned long size) {
+				fseek(fp, addr, SEEK_SET);
+				fwrite(data, size, 1, fp);
 			}
 		};
 	}
