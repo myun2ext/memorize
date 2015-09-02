@@ -2,6 +2,7 @@
 #define __MYUN2_GITHUB_COM__MEMORIZE5__FILE_ALLOCATOR_HPP__
 
 #include <stdio.h>
+#include <string.h>
 #ifdef WIN32
 	#include <io.h>
 	#pragma warning (disable:4996)
@@ -44,6 +45,12 @@ namespace myun2
 				fseek(fp, 0, SEEK_END);
 				unsigned long p = ftell(fp);
 				fwrite(data, size, 1, fp);
+				return p;
+			}
+			unsigned long add(const char* s) {
+				fseek(fp, 0, SEEK_END);
+				unsigned long p = ftell(fp);
+				fwrite(s, strlen(s), 1, fp);
 				return p;
 			}
 			void read(unsigned long addr, void* data, unsigned long size) {

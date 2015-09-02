@@ -7,10 +7,11 @@ using namespace myun2::memorize;
 int main()
 {
 	file_allocator f("test.db");
-	unsigned long p = f.add("test.\0", 6);
+	//unsigned long p = f.add("test.\0", 6);
+	unsigned long p = f.add("Yukikaze.");
 
 	char buf[5];
-	f.read(p, buf, 6);
+	f.read(p, buf, 9);
 	printf("[%d] %s\n", p, buf);
 
 	return 0;
